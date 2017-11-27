@@ -34,121 +34,121 @@
     </head>
     <body>
         <textarea id="source">layout: true
-            name: head
-            class: middle, center, inverse
-            <style>
-                .huge {
-                font-size: 2rem;
-                }
-            </style>
-            ---
-            layout: true
-            name: code
-            template: head
-            class: middle huge
-            ---
-            layout: true
-            name: text
-            class: middle huge
-            ---
-            template: head
-            # GraphQL
-            ---
-            class: middle
-            # What
-            ## Query language, Facebook, 2012
-            ## Specification for building and consuming APIs
-            ## Transport agnostic, but often HTTP
-            ## Compose multiple queries in one
-            ---
-            template: code
-            # Schema
-            ## Server defines the schema
-            ```graphql
-            type Query {
-            book(id: ID!): Book
-            }
-            type Book {
-            title: String
-            author: Author
-            }
-            type Author {
-            firstName: String
-            lastName: String
-            }
-            ```
-            ???
-            - `!` means required
-            - `ID` is a type
-            - `Book` is a type
-            - `Author` is a type
-            ---
-            template: code
-            # Query
-            ## Client asks for specific fields
-            ```graphql
-            {
-            book(id: "1") {
-            title
-            author {
-            firstName
-            }
-            }
-            }
-            ```
-            ---
-            template: code
-            # Response
-            ## Contains only fields queried for
-            ```json
-            {
-            "title": "The Colour of Magic",
-            "author": {
-            "firstName": "Terry"
-            }
-            }
-            ```
-            ---
-            template: text
-            # How
-            ## API data represents a graph
-            ## One DataFetcher per field, per type
-            ## Each field can take arguments
-            ## Custom argument types, scalars
-            ???
-            Its in the name: graph ql
+name: head
+class: middle, center, inverse
+<style>
+    .huge {
+    font-size: 2rem;
+    }
+</style>
+---
+layout: true
+name: code
+template: head
+class: middle huge
+---
+layout: true
+name: text
+class: middle huge
+---
+template: head
+# GraphQL
+---
+class: middle
+# What
+## Query language, Facebook, 2012
+## Specification for building and consuming APIs
+## Transport agnostic, but often HTTP
+## Compose multiple queries in one
+---
+template: code
+# Schema
+## Server defines the schema
+```graphql
+type Query {
+book(id: ID!): Book
+}
+type Book {
+title: String
+author: Author
+}
+type Author {
+firstName: String
+lastName: String
+}
+```
+???
+- `!` means required
+- `ID` is a type
+- `Book` is a type
+- `Author` is a type
+---
+template: code
+# Query
+## Client asks for specific fields
+```graphql
+{
+book(id: "1") {
+title
+author {
+firstName
+}
+}
+}
+```
+---
+template: code
+# Response
+## Contains only fields queried for
+```json
+{
+"title": "The Colour of Magic",
+"author": {
+"firstName": "Terry"
+}
+}
+```
+---
+template: text
+# How
+## API data represents a graph
+## One DataFetcher per field, per type
+## Each field can take arguments
+## Custom argument types, scalars
+???
+Its in the name: graph ql
 
-            In the previous example, the data fetcher behind `author` would typically call the author service to fetch it's value
-            ---
-            template: head
-            # Demo
-            ## [Lane volumes API](http://localhost:8083/api/volume/)
-            ---
-            template: text
-            # Upsides
-            ## Communicates relations in the model
-            ## Backwards compatible API extensions
-            ## Fine grained access control per field
-            ---
-            template: text
-            # Downsides?
-            ## Brand new
-            ## HTTP caching no longer works
-            ## Limited resources (compared to REST)
-            ## ..but A LOT is happening
-            ---
-            template: head
-            # Should you try it?
-            ## Yes!
-            ---
-            template: head
-            ## Thanks!
-            ## [@torgeir](http://github.com/torgeir)
-            ---
-            template: head
-            # Resources
-            ### https://dev-blog.apollodata.com/graphql-vs-rest-5d425123e34b
-            ### https://github.com/apollographql/react-apollo</textarea>
+In the previous example, the data fetcher behind `author` would typically call the author service to fetch it's value
+---
+template: head
+# Demo
+## [Lane volumes API](http://localhost:8083/api/volume/)
+---
+template: text
+# Upsides
+## Communicates relations in the model
+## Backwards compatible API extensions
+## Fine grained access control per field
+---
+template: text
+# Downsides?
+## Brand new
+## HTTP caching no longer works
+## Limited resources (compared to REST)
+## ..but A LOT is happening
+---
+template: head
+# Should you try it?
+## Yes!
+---
+template: head
+## Thanks!
+## [@torgeir](http://github.com/torgeir)
+---
+template: head
+# Resources
+### https://dev-blog.apollodata.com/graphql-vs-rest-5d425123e34b
+### https://github.com/apollographql/react-apollo</textarea>
         <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
         <script>
             var slideshow = remark.create({ highlightStyle: 'monokai' });
