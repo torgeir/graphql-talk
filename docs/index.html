@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="keywords" content="remark,remarkjs,markdown,slideshow,presentation" />
+        <meta name="description" content="A simple, in-browser, markdown-driven slideshow tool." />
+        <title>Remark</title>
+        <style type="text/css">
+            @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+            @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+            @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+            img {max-width: 100%;}
+            body {font-family: 'Droid Serif'; font-size: 100%; color: #333;}
+            h1, h2, h3 {font-family: 'Yanone Kaffeesatz'; font-weight: normal;}
+            h1, h2, h3, p {margin-top: 1rem; margin-bottom: 0.25rem;}
+            h2 {color: #888;}
+            h3 {color: #aaa;}
+            a {color: rgb(249, 38, 114); text-decoration: none;}
+            .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+            .inverse {background: #272822; color: #777872; text-shadow: 0 0 20px #333;}
+            .inverse h1,
+            .inverse h2 {color: #f3f3f3; line-height: 0.8em;}
+            .inverse h2 {color: #a3a3a3;}
+            .remark-slide-content h1 {font-size: 4rem;}
+            .remark-slide-content h2 {font-size: 3.5rem;}
+            .remark-slide-content.left {text-align: left;}
+            .remark-code {text-align: left; font-size: 2rem;}
+            .remark-slide-number { display: none; }
+            .remark-notes-preview-area {display: none}
+            .remark-notes-current-area {height: 100% !important;}
+            .remark-notes { font-size: 1.2rem; }
+        </style>
+    </head>
+    <body><script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.18.13'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
+        <textarea id="source">layout: true
+            name: head
+            class: middle, center, inverse
+            <style>
+                .huge {
+                font-size: 2rem;
+                }
+            </style>
+            ---
+            layout: true
+            name: code
+            template: head
+            class: middle huge
+            ---
+            layout: true
+            name: text
+            class: middle huge
+            ---
+            template: head
+            # GraphQL
+            ---
+            class: middle
+            # What
+            ## Query language, Facebook, 2012
+            ## Specification for building and consuming APIs
+            ## Transport agnostic, but often HTTP
+            ## Compose multiple queries in one
+            ---
+            template: code
+            # Schema
+            ## Server defines the schema
+            ```graphql
+            type Query {
+            book(id: ID!): Book
+            }
+            type Book {
+            title: String
+            author: Author
+            }
+            type Author {
+            firstName: String
+            lastName: String
+            }
+            ```
+            ???
+            - `!` means required
+            - `ID` is a type
+            - `Book` is a type
+            - `Author` is a type
+            ---
+            template: code
+            # Query
+            ## Client asks for specific fields
+            ```graphql
+            {
+            book(id: "1") {
+            title
+            author {
+            firstName
+            }
+            }
+            }
+            ```
+            ---
+            template: code
+            # Response
+            ## Contains only fields queried for
+            ```json
+            {
+            "title": "The Colour of Magic",
+            "author": {
+            "firstName": "Terry"
+            }
+            }
+            ```
+            ---
+            template: text
+            # How
+            ## API data represents a graph
+            ## One DataFetcher per field, per type
+            ## Each field can take arguments
+            ## Custom argument types, scalars
+            ???
+            Its in the name: graph ql
+
+            In the previous example, the data fetcher behind `author` would typically call the author service to fetch it's value
+            ---
+            template: head
+            # Demo
+            ## [Lane volumes API](http://localhost:8083/api/volume/)
+            ---
+            template: text
+            # Upsides
+            ## Communicates relations in the model
+            ## Backwards compatible API extensions
+            ## Fine grained access control per field
+            ---
+            template: text
+            # Downsides?
+            ## Brand new
+            ## HTTP caching no longer works
+            ## Limited resources (compared to REST)
+            ## ..but A LOT is happening
+            ---
+            template: head
+            # Should you try it?
+            ## Yes!
+            ---
+            template: head
+            ## Thanks!
+            ## [@torgeir](http://github.com/torgeir)
+            ---
+            template: head
+            # Resources
+            ### https://dev-blog.apollodata.com/graphql-vs-rest-5d425123e34b
+            ### https://github.com/apollographql/react-apollo</textarea>
+        <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
+        <script>
+            var slideshow = remark.create({ highlightStyle: 'monokai' });
+        </script>
+    </body>
+</html>
