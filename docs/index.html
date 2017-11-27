@@ -66,15 +66,15 @@ template: code
 ## Server defines the schema
 ```graphql
 type Query {
-book(id: ID!): Book
+  book(id: ID!): Book
 }
 type Book {
-title: String
-author: Author
+  title: String
+  author: Author
 }
 type Author {
-firstName: String
-lastName: String
+  firstName: String
+  lastName: String
 }
 ```
 ???
@@ -88,12 +88,12 @@ template: code
 ## Client asks for specific fields
 ```graphql
 {
-book(id: "1") {
-title
-author {
-firstName
-}
-}
+  book(id: "1") {
+    title
+    author {
+      firstName
+    }
+  }
 }
 ```
 ---
@@ -102,10 +102,10 @@ template: code
 ## Contains only fields queried for
 ```json
 {
-"title": "The Colour of Magic",
-"author": {
-"firstName": "Terry"
-}
+  "title": "The Colour of Magic",
+  "author": {
+    "firstName": "Terry"
+  }
 }
 ```
 ---
