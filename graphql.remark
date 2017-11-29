@@ -47,6 +47,8 @@ type Author {
 - `ID` is a type
 - `Book` is a type
 - `Author` is a type
+- Defines fields that can be queried
+- Server defines data "resolvers" for, possibly, each field
 ---
 template: code
 # Query
@@ -61,6 +63,11 @@ template: code
   }
 }
 ```
+???
+- Use the `book` query
+- Ask for book with `id: 1`
+- Fetch the `title` property
+- And the `author` with `firstName`
 ---
 template: code
 # Response
@@ -77,7 +84,7 @@ template: code
 template: text
 # How
 ## API data represents a graph
-## One DataFetcher per field, per type
+## One resolver per field, per type
 ## Each field can take arguments
 ## Custom argument types, scalars
 ???
@@ -87,13 +94,15 @@ In the previous example, the data fetcher behind `author` would typically call t
 ---
 template: head
 # Demo
-## [Lane volumes API](http://localhost:8083/api/volume/)
+## [Lane volumes API](http://localhost:8083/api/volume/index.html)
 ---
 template: text
 # Upsides
 ## Communicates relations in the model
 ## Backwards compatible API extensions
 ## Fine grained access control per field
+## Clients only fetch what they need
+## Other fields data are never fetched
 ---
 template: text
 # Downsides?
